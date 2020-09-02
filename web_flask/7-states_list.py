@@ -18,11 +18,13 @@ if __name__ == '__main__':
         """
         fetches data from storage engine and displays rendered HTML page
         """
-        states_result = storage.all(State)
-        return render_template('7-states_list', states_result=states_result)
+        states = storage.all("State")
+        states_result = states.values()
+        return render_template('7-states_list.html',
+                               states_result=states_result)
 
     @app.teardown_appcontext
-    def teardown():
+    def teardown(self):
         """
         removes current SQLAlchemy Session after each request
         """
