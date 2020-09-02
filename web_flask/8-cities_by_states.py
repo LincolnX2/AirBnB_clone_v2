@@ -26,8 +26,8 @@ if __name__ == '__main__':
         return render_template('7-states_list.html',
                                states_result=states_result)
 
-    @app.route('/cities_by_state', strict_slashes=False)
-    def cities_by_state():
+    @app.route('/cities_by_states', strict_slashes=False)
+    def cities_by_states():
         """
         fetches data from storage engine and displays rendered HTML page
         uses cities relationship or getter to list cities by state
