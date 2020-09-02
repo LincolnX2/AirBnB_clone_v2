@@ -19,12 +19,7 @@ if __name__ == '__main__':
         fetches data from storage engine and displays rendered HTML page
         """
         states_result = storage.all(State)
-        state_list = []
-        for state in states_result:
-            state_text = "<LI> State: {}: <B>{}</B> </LI>\n".format(
-                state.get('id'), state.get('name'))
-            state_list.append(state_text)
-        return render_template('7-states_list', state_list=state_list)
+        return render_template('7-states_list', states_result=states_result)
 
     @app.teardown_appcontext
     def teardown():
