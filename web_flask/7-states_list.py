@@ -21,7 +21,7 @@ if __name__ == '__main__':
         states_result = storage.all(State)
         state_list = []
         for state in states_result:
-            state_text = "State: {}: <B>{}</B>".format(
+            state_text = "<LI> State: {}: <B>{}</B> </LI>\n".format(
                 state.get('id'), state.get('name'))
             state_list.append(state_text)
         return render_template('7-states_list', state_list=state_list)
