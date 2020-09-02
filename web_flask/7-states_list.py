@@ -11,6 +11,7 @@ if __name__ == '__main__':
     from flask import Flask
     from flask import render_template
     from models import storage
+    from operator import attrgetter
     app = Flask(__name__)
 
     @app.route('/states_list', strict_slashes=False)
@@ -19,7 +20,8 @@ if __name__ == '__main__':
         fetches data from storage engine and displays rendered HTML page
         """
         states = storage.all("State")
-        states_result = states.values()
+        result = states.values()
+        states_result = sorted(result, key=attrgetter('name'))
         return render_template('7-states_list.html',
                                states_result=states_result)
 
