@@ -48,7 +48,7 @@ if __name__ == '__main__':
         """
         states = storage.all("State")
         result = states.values()
-        if (_id == None):
+        if (_id is None):
             states_result = sorted(result, key=attrgetter('name'))
             return render_template('9-states.html',
                                    states_result=states_result, _id=_id)
