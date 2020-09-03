@@ -35,7 +35,7 @@ if __name__ == '__main__':
         states = storage.all("State")
         result = states.values()
         states_result = sorted(result, key=attrgetter('name'))
-        return render_template('7-states_list.html',
+        return render_template('8-cities_by_states.html',
                                states_result=states_result)
 
     @app.teardown_appcontext
