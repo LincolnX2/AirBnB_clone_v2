@@ -41,25 +41,23 @@ if __name__ == '__main__':
 
     @app.route('/states', strict_slashes=False)
     @app.route('/states/<id>', strict_slashes=False)
-    def states_id(_id=None):
+    def states_id(id=None):
         """
         fetches data from storage engine and displays rendered HTML page
         uses cities relationship or getter to list cities by state
         """
         states = storage.all("State")
         result = states.values()
-        if (_id is None):
+        if (id is None):
             states_result = sorted(result, key=attrgetter('name'))
             return render_template('9-states.html',
-                                   states_result=states_result, _id=_id)
+                                   states_result=states_result, id=id)
         for state in result:
-            if state.id == _id:
-                states_result = []
-                states_result.append(state)
+            if state.id == id:
                 return render_template('9-states.html',
-                                       states_result=states_result, _id=_id)
+                                       states_result=state, id=id)
         return render_template('9-states.html',
-                               states_result=None, _id=_id)
+                               states_result=None, id=id)
 
     @app.teardown_appcontext
     def teardown(self):
